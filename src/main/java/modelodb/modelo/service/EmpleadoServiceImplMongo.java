@@ -28,29 +28,33 @@ public class EmpleadoServiceImplMongo implements EmpleadoService{
 	@Override
 	public Empleado insertOne(Empleado empleado) {
 		// TODO Auto-generated method stub
-		if(!empleadoRepository.existsById(empleado.getId()))
+		if(empleado.getId() == null ||!empleadoRepository.existsById(empleado.getId()))
+			return empleadoRepository.save(empleado);
+		return null;
 	}
 
 	@Override
 	public Empleado updateOne(Empleado empleado) {
 		// TODO Auto-generated method stub
+		if(!empleadoRepository.existsById(empleado.getId()))
+			return empleadoRepository.save(empleado);
 		return null;
 	}
 
 	@Override
-	public int deleteOne(Object id) {
+	public int deleteOne(ObjectId id) {
 		// TODO Auto-generated method stub
-		/*if(empleadoRepository.existById(id)) {
-			empleadoRepository.delete(id);
+		if(empleadoRepository.existsById(id)) {
+			empleadoRepository.deleteById(id);
 			return 1;
-		}*/
+		}
 		return 0;
 	}
 
 	@Override
 	public List<Empleado> buscarPorSalarioMayor(double salario) {
 		// TODO Auto-generated method stub
-		return null;
+		return empleadoRepository.findByTrabajo_salarioGreaterThan(salario);
 	}
 
 }

@@ -12,6 +12,6 @@ public interface EmpleadoService {
 	List<Empleado> buscarTodos();
 	Empleado insertOne(Empleado empleado);
 	Empleado updateOne(Empleado empleado);
-	int deleteOne(Object id);
+	int deleteOne(ObjectId id);
 	List<Empleado> buscarPorSalarioMayor(double salario);
 }
