@@ -1,4 +1,4 @@
-package mondodb.repository;
+package mongodb.repository;
 
 import java.util.List;
 

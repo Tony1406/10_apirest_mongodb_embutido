@@ -1,13 +1,15 @@
-package modelodb.modelo.service;
+package mongodb.modelo.service;
 
 import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import mondodb.repository.EmpleadoRepository;
 import mongodb.modelo.collection.Empleado;
+import mongodb.repository.EmpleadoRepository;
 
+@Service
 public class EmpleadoServiceImplMongo implements EmpleadoService{
 	
 	@Autowired

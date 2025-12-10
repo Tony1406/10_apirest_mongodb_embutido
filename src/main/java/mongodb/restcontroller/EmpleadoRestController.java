@@ -1,4 +1,4 @@
-package mondodb.restcontroller;
+package mongodb.restcontroller;
 
 import java.util.List; 
 
@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import modelodb.modelo.service.EmpleadoService;
 import mongodb.modelo.collection.Empleado;
+import mongodb.modelo.service.EmpleadoService;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -53,7 +54,7 @@ public class EmpleadoRestController {
 		
 	}
 	
-	@PostMapping("/")
+	@PutMapping("/update")
 	public ResponseEntity<?> update(@RequestBody Empleado empleado){
 		if(empleadoService.updateOne(empleado) != null)
 			return ResponseEntity.status(200).body("Empleado modificado" + empleadoService.updateOne(empleado));
@@ -62,9 +63,9 @@ public class EmpleadoRestController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> delete(@RequestBody ObjectId id){
-		if(empleadoService.deleteOne(id) != null)
-			return ResponseEntity.status(200).body("Empleado modificado" + empleadoService.updateOne(id));
+	public ResponseEntity<?> delete(@PathVariable ObjectId id){
+		if(empleadoService.deleteOne(id) == 1)
+			return ResponseEntity.status(200).body("Empleado modificado");
 		else 
 			return ResponseEntity.status(400).body("Empleado nooo modificado");
 		

@@ -1,4 +1,4 @@
-package modelodb.modelo.service;
+package mongodb.modelo.service;
 
 import java.util.List;
 
